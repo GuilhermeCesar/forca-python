@@ -12,7 +12,7 @@ def jogar():
     print(letras_acertadas)
 
     #enquanto (True and True)
-    while(not enforcou and not  acertou):
+    while(True):
         chute = input("Qual a letra?")
         chute = chute.strip().upper();
 
@@ -30,11 +30,22 @@ def jogar():
             erros +=1
 
         enforcou = erros == 6
+
+        if(enforcou):
+            break
+
+
         acertou = "_" not in letras_acertadas
+
+        if(acertou):
+            break
 
         print(letras_acertadas)
         letras_faltando = str(letras_acertadas.count('_'))
         print('Ainda faltam acertar {} letras'.format(letras_faltando))
+
+        print("Você tem mais {} tentativas".format(6-erros))
+
     if(acertou):
         print("Você ganhou")
     else:
